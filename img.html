@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0a192f;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+          color: white;
+        }
+
+        .imgmain {
+            display: block;
+           
+        }
+
+        .gallery-container {
+            display: flexbox;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px; /* This adds 20px gap between both rows and columns */
+    justify-items: center;
+    padding: 20px;
+    width: 50%;
+    margin-left: 27rem;
+        }
+
+        .gallery-container img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-container img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Fullscreen popup for image */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #popup-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="imgmain">
+        <h1>Image Gallery</h1>
+        <div class="gallery-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXVZZliLgkKIp9zRtP5U2iVR6X3-9BPknXSg&s" class="gallery">
+            <img src="https://cdn.makemygarden.com/uploads/2021/08/101.jpg">
+            <img src="https://5.imimg.com/data5/SELLER/Default/2024/8/440727649/TR/OJ/EJ/88329368/imported-tulip-flower-bulbs-500x500.jpeg" class="gallery">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6mT1093AusZMukntb54-YfXiKHx5F5FyHka8QGlo-cYu28Jqi_khqJFaItnLd__BGcKE&usqp=CAU">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1foPiWmgtSqUEJK7CXK6qgcrgHG_4T6x1OQ&s" class="gallery">
+            <img src="https://plus.unsplash.com/premium_photo-1676385054211-dc8b89253f9b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VycyUyMGluJTIwYSUyMHZhc2V8ZW58MHx8MHx8fDA%3D">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrBwARZpC1OVgQCHh9JbNmL52o4rWFjVwlEw&s" class="gallery">
+            <img src="https://hips.hearstapps.com/hmg-prod/images/gettyimages-758630371-1515508630.jpg?crop=0.446xw:1.00xh;0.140xw,0&resize=980:*">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ4UZUBn2cGjhRnHZPTKX-OONUf07_i5rnAA&s" class="gallery">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnvi5o4KHUpvXQ7G1YTe9HgnT5hQv2DMFz1w&s">
+        </div>
+    </div>
+
+    <!-- Fullscreen popup -->
+    <div id="popup">
+        <img id="popup-img" src="">
+    </div>
+
+    <script>
+        const popup = document.getElementById('popup');
+        const popupImg = document.getElementById('popup-img');
+
+        document.querySelectorAll('.gallery-container img').forEach(img => {
+            img.addEventListener('click', () => {
+                popupImg.src = img.src;
+                popup.style.display = 'flex';
+            });
+        });
+
+        popup.addEventListener('click', () => {
+            popup.style.display = 'none';
+            popupImg.src = '';
+        });
+    </script>
+
+</body>
+</html>
